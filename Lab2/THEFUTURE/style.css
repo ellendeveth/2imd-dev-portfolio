@@ -45,4 +45,17 @@ section {
         grid-row: 3 / 4;
     }
 }
-
+@media(min-width: 1000px){
+    section{
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .broken {
+        grid-column: 3 / 4;
+        grid-row: 1 / -1;
+    }
+    .infinity{
+        grid-column: 4 / 6;
+        grid-row: 2 / 4;
+    }
+}
