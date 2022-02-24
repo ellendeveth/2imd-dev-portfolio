@@ -148,3 +148,21 @@ h2 {
         
     }
 }
+@media (prefers-color-scheme: dark) {
+   .overlay {
+        opacity: 1;
+    }
+    body {
+        color: black;
+    }
+}
+@media (prefers-color-scheme: light) {
+    .overlay {
+        opacity: .50;
+    }
+    body {
+        color: white;
+    }
+    
+}
+
