@@ -2,6 +2,10 @@
     box-sizing: border-box;
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    
+}
+html, body {
+    height: 100%;
 }
 
 .container {
@@ -38,6 +42,11 @@ header {
 h1 {
     letter-spacing: 0.3em;
 }
+h2 {
+    font-weight: lighter;
+    letter-spacing: 0.2em;
+    font-size: 1.5em;
+}
 .qrcode {
    
     grid-column: 1 / -1;
@@ -49,7 +58,7 @@ h1 {
    
 }
 .qrcode img {
-    max-width: 100%;
+    width: 300px;
     
 }
 
@@ -80,4 +89,62 @@ h1 {
     font-size: 20px;
     display: flex;
     justify-content: center;
+}
+@media(min-width: 600px){
+    
+    .container {
+        height: 400px;
+      
+    }
+    .overlay {
+        
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+        grid-template-rows:5fr 1fr 1fr ;
+        
+       
+    }
+    header {
+        grid-column: 1 / 4;
+        grid-row: 1 / span 1;
+        flex-direction: column-reverse;
+        background-color: transparent;
+        border: solid 1px black;
+        color: black;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    h2 {
+        font-size: 14px;
+        padding: 1em;
+    }
+    .qrcode {
+   
+        grid-column: 4 / -1;
+        grid-row: 1/ -1;
+        border: solid 1px black;
+    }
+    .frustrated {   
+        display: block;
+        grid-column: 1 / 4;
+        grid-row: 3 / span 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px black;
+    }
+    .date {
+        grid-column: 1 / 2;
+        grid-row: 2 / span 1;
+        
+    }
+    .admit {
+        grid-column: 2 / 3;
+        grid-row: 2 / span 1;
+        
+    }
+    .ticket {
+        grid-column: 3 / 4;
+        grid-row: 2 / span 1;
+        
+    }
 }
