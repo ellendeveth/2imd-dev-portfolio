@@ -32,3 +32,17 @@ section {
     grid-row: 6 / span 1;
     
 }
+@media(min-width: 700px){
+    section{
+        grid-template-columns: 1fr 1fr;
+    }
+    .broken {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    .infinity {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+    }
+}
+
