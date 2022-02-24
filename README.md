@@ -10,11 +10,13 @@ In this repository you'll find all my work from each week I do during my dev cla
 [repository-LAB2](https://github.com/ellendeveth/2imd-dev-portfolio/tree/main/Lab2)
 
 1. [repository-THEFUTURE](https://github.com/ellendeveth/2imd-dev-portfolio/tree/main/Lab2/THEFUTURE)
-    ### Codepen
+    
+    [codepen-THEFUTURE](https://codepen.io/ellendeveth/pen/NWwBavY)
 
 
 2. [repository-IMDticket](https://github.com/ellendeveth/2imd-dev-portfolio/tree/main/Lab2/IMDticket)
-    ### Codepen
+   
+   [codepen-IMDticket](https://codepen.io/ellendeveth/pen/gOXjxVw)
 
 ![screenshot flexboxfroggy](https://github.com/ellendeveth/2imd-dev-portfolio/blob/main/Lab2/flexboxfroggy.png)
 
