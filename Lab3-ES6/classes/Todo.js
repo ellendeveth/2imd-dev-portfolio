@@ -24,14 +24,18 @@ export default class Todo {
 
     // don't forget to hook up an event listener for the click event
     newNote.addEventListener("click", this.markDone() );
-    
+
     return newNote;
   }
 
   markDone(e) {
     // HINT🤩
     // this function should mark the current todo as done, by adding the correct CSS class
+    newNote.classList.add("done");
     // if the item is clicked, but was already marked as done, remove the item from the list
+    if(newNote.classlist.includes("done")){
+      newNote.addEventListener("click", this.remove());
+    }
   }
 
   add() {
