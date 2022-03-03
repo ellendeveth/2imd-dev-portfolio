@@ -27,20 +27,26 @@ class Todo {
 
       newNote.innerHTML = title;
 
-      newNote.addEventListener("click", this.remove() );
+      newNote.addEventListener("click", this.markDone() );
       return newNote;
     }
   
     markDone(e) {
       // HINT🤩
       // this function should mark the current todo as done, by adding the correct CSS class
+      newNote.classList.add("done");
       // if the item is clicked, but was already marked as done, remove the item from the list
+      if(newNote.classlist.includes("done")){
+        newNote.addEventListener("click", this.remove());
+      }
     }
   
     add() {
       // HINT🤩
       // this function should append the note to the screen somehow
       // let todo = this.createElement(); // should return a full <li> with the right classes and innerHTML
+      let todo = this.createElement();
+      document.querySelector("#todo-list").appendChild(todo);
     }
   
     saveToStorage() {
