@@ -3,15 +3,18 @@ class Todo {
       // HINT🤩
       // use a constructor to set basic property values
       // this.title = title;
+      this.title = title;
     }
   
-    createElement() {
+    createElement(title) {
       // HINT🤩
       // this method will create the HTML structure with the correct classes, based on the todo priority
       // let newNote = document.createElement("li");
       // check if the todo item includes a priority like medium: to generate the correct classnames
       // don't forget to hook up an event listener for the click event
       // return newNote;
+      let newNote = document.createElement("li");
+      newNote.innerHTML = title;
     }
   
     markDone(e) {
