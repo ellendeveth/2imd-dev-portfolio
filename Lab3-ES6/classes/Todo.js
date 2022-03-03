@@ -8,13 +8,24 @@ export default class Todo {
   createElement() {
     // HINT🤩
     // this method will create the HTML structure with the correct classes, based on the todo priority
+    // check if the todo item includes a priority like medium: to generate the correct classnames
     let newNote = document.createElement("li");
     newNote.innerHTML = this.title;
-    newNote.classList.add("prior-high");
-    return newNote;
-    // check if the todo item includes a priority like medium: to generate the correct classnames
+
+    if(title.includes("high")){
+      newNote.className = "prior-high";
+
+    } else if(title.includes("low")){
+      newNote.className = "prior-low";
+    } else {
+      //sowieso medium
+      newNote.className = "prior-medium";
+    }
+
     // don't forget to hook up an event listener for the click event
-    // return newNote;
+    newNote.addEventListener("click", this.markDone() );
+    
+    return newNote;
   }
 
   markDone(e) {
