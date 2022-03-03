@@ -14,7 +14,21 @@ class Todo {
       // don't forget to hook up an event listener for the click event
       // return newNote;
       let newNote = document.createElement("li");
+      
+      if(title.includes("high")){
+        newNote.className = "prior-high";
+
+      } else if(title.includes("low")){
+        newNote.className = "prior-low";
+      } else {
+        //sowieso medium
+        newNote.className = "prior-medium";
+      }
+
       newNote.innerHTML = title;
+
+      newNote.addEventListener("click", this.remove() );
+      return newNote;
     }
   
     markDone(e) {
