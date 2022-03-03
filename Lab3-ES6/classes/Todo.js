@@ -3,6 +3,7 @@ export default class Todo {
     // HINT🤩
     // use a constructor to set basic property values
     this.title = title;
+    
   }
 
   createElement() {
@@ -11,19 +12,24 @@ export default class Todo {
     // check if the todo item includes a priority like medium: to generate the correct classnames
     let newNote = document.createElement("li");
     newNote.innerHTML = this.title;
+   
+    //newNote.classList.add('prior-low');
+    if(this.title.includes("high:")){
+      newNote.classList.add("prior-high");
+      //this.title.replace("high", "hallo");
+      
 
-    if(title.includes("high")){
-      newNote.className = "prior-high";
-
-    } else if(title.includes("low")){
-      newNote.className = "prior-low";
+    } else if(this.title.includes("low:")){
+      newNote.classList.add("prior-low");
+      this.title.replace("low", "hallo");
     } else {
       //sowieso medium
-      newNote.className = "prior-medium";
-    }
-
+      newNote.classList.add("prior-medium");
+      //this.title.replace("medium", "hallo");
+    } 
+   
     // don't forget to hook up an event listener for the click event
-    newNote.addEventListener("click", this.markDone() );
+    newNote.addEventListener("click", this.markDone.bind(newNote) );
 
     return newNote;
   }
@@ -31,11 +37,17 @@ export default class Todo {
   markDone(e) {
     // HINT🤩
     // this function should mark the current todo as done, by adding the correct CSS class
-    newNote.classList.add("done");
+    this.classList.add("done");
+  
     // if the item is clicked, but was already marked as done, remove the item from the list
-    if(newNote.classlist.includes("done")){
-      newNote.addEventListener("click", this.remove());
-    }
+    this.addEventListener("click", () => {
+      if(this.className.includes("done")){
+        this.addEventListener("click", this.remove());
+        //console.log('klik');
+      }
+    })
+    
+    
   }
 
   add() {
