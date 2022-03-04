@@ -21,5 +21,6 @@ In this repository you'll find all my work from each week I do during my dev cla
 ## LAB3
 
 [repository-IMDO app](https://github.com/ellendeveth/2imd-dev-portfolio/tree/main/Lab3-ES6)
+
 [codesandbox](https://codesandbox.io/embed/hungry-cori-pfnpwg?fontsize=14&hidenavigation=1&theme=dark)
 
