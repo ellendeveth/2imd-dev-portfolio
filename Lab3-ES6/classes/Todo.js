@@ -50,8 +50,8 @@ export default class Todo {
         items = JSON.parse(items);
         
         let text = this.innerHTML;
-        let thisText = (item) => item === text;
-        let index = items.findIndex(thisText);
+        
+        let index = items.indexOf(text);
         items.splice(index, 1);
         localStorage.setItem("items", JSON.stringify(items));
 
