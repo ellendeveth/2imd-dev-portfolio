@@ -46,6 +46,17 @@ export default class Todo {
       if(this.className.includes("done")){
         this.addEventListener("click", this.remove());
         //console.log('klik');
+        let items = localStorage.getItem("items");
+        items = JSON.parse(items);
+        
+        let text = this.innerHTML;
+        let thisText = (item) => item === text;
+        let index = items.findIndex(thisText);
+        items.splice(index, 1);
+        localStorage.setItem("items", JSON.stringify(items));
+
+       
+
       }
     })
     
