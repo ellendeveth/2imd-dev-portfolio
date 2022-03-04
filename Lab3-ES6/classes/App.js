@@ -7,7 +7,7 @@ export default class App {
       // set up the enter Key
       this.setupEventListeners();
       // when the app loads, we can show previously saved items from localstorage
-      // this.loadFromStorage();
+      this.loadFromStorage();
     }
   
     setupEventListeners() {
@@ -32,9 +32,11 @@ export default class App {
       if (e.key === "Enter") {
         console.log("📕");
 
-        let todoValue = document.querySelector("#add-item-text").value;
-        let todo = new Todo(todoValue);
+        let todoValue = document.querySelector("#add-item-text");
+        let todo = new Todo(todoValue.value);
         todo.add();
+        todo.saveToStorage();
+        this.reset(todoValue);
     }
     // this.reset();
     console.log(this);
@@ -43,11 +45,24 @@ export default class App {
     loadFromStorage() {
       // HINT🤩
       // load all items from storage here and add them to the screen
-      // use the Todo class to create the elements
+      let items = localStorage.getItem("items");
+      items = JSON.parse(items);
+
+      if(items !== null){
+        // use the Todo class to create the elements
+        items.forEach(element => {
+          let item = new Todo(element);
+          item.add();
+        });
+      } 
+      
     }
   
-    reset() {
+    reset(element) {
       // this function should reset the form / clear the text field
+      element.value = "";
+      //console.log(element);
+      
     }
   }
   

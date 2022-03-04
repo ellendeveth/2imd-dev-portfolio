@@ -16,7 +16,7 @@ export default class Todo {
     //newNote.classList.add('prior-low');
     if(this.title.includes("high:")){
       newNote.classList.add("prior-high");
-      //this.title.replace("high", "hallo");
+      this.title = this.title.replace("high", "hallo");
       
 
     } else if(this.title.includes("low:")){
@@ -61,5 +61,21 @@ export default class Todo {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
+    let item = [];
+    let string = JSON.stringify(item);
+    console.log(string);
+    if(localStorage.getItem("items") === null){ //geen array, dus lege array vullen
+      item.push(this.title);
+      console.log(string);
+      localStorage.setItem('items', string);
+      
+    }else {   //array ophalen en uitsplitsen om daarna toe te voegen
+      item = JSON.parse(localStorage.getItem('items'));
+      item.push(this.title);
+      localStorage.setItem('items', string);
+    }
+   
+    
+    
   }
 }
