@@ -11,26 +11,28 @@ export default class Todo {
     // this method will create the HTML structure with the correct classes, based on the todo priority
     // check if the todo item includes a priority like medium: to generate the correct classnames
     let newNote = document.createElement("li");
-    newNote.innerHTML = this.title;
    
+   
+    
     //newNote.classList.add('prior-low');
     if(this.title.includes("high:")){
       newNote.classList.add("prior-high");
-      this.title = this.title.replace("high", "hallo");
+      this.title = this.title.replace("high:", "");
       
-
     } else if(this.title.includes("low:")){
       newNote.classList.add("prior-low");
-      this.title.replace("low", "hallo");
+      this.title = this.title.replace("low:", "");
+
     } else {
       //sowieso medium
       newNote.classList.add("prior-medium");
+      this.title = this.title.replace("medium:", "");
       //this.title.replace("medium", "hallo");
     } 
-   
+    newNote.innerHTML = this.title;
     // don't forget to hook up an event listener for the click event
     newNote.addEventListener("click", this.markDone.bind(newNote) );
-
+    
     return newNote;
   }
 
@@ -61,21 +63,23 @@ export default class Todo {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
-    let item = [];
-    let string = JSON.stringify(item);
-    console.log(string);
+    
+
     if(localStorage.getItem("items") === null){ //geen array, dus lege array vullen
+      let item = [];
+      let string = JSON.stringify(item);
       item.push(this.title);
-      console.log(string);
       localStorage.setItem('items', string);
-      
+
     }else {   //array ophalen en uitsplitsen om daarna toe te voegen
-      item = JSON.parse(localStorage.getItem('items'));
+      let item = JSON.parse(localStorage.getItem('items'));
       item.push(this.title);
+      let string = JSON.stringify(item);
       localStorage.setItem('items', string);
     }
-   
-    
-    
+
+
+
   }
+
 }
