@@ -51,7 +51,7 @@ export default class App {
       if(items !== null){
         // use the Todo class to create the elements
         items.forEach(element => {
-          let item = new Todo(element);
+          let item = new Todo(`${element['level']}:${element['title']}`);
           item.add();
         });
       } 
