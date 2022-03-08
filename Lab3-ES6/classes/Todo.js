@@ -1,10 +1,10 @@
 export default class Todo {
-  constructor(title, level) {
+  constructor(title, level, status) {
     // HINT🤩
     // use a constructor to set basic property values
     this.title = title;
     this.level = level;
-   
+    this.status = status;
   }
 
   createElement() {
@@ -43,29 +43,29 @@ export default class Todo {
   markDone(e) {
     // HINT🤩
     // this function should mark the current todo as done, by adding the correct CSS class
-    
+    let items = localStorage.getItem("items");
+    items = JSON.parse(items);
+
+    let level;
+    if(this.className.includes("prior-low"))
+      {
+        level =  "low"
+      } else if(this.className.includes("prior-medium"))
+      {
+        level =  "medium"
+      }else if(this.className.includes("prior-high"))
+      {
+        level =  "high"
+      }
+
     // if the item is clicked, but was already marked as done, remove the item from the list
     
       if(this.className.includes("done")){
         this.addEventListener("click", this.remove());
         //console.log('klik');
-        let items = localStorage.getItem("items");
-        items = JSON.parse(items);
         
         //let text = this.innerHTML;
         
-        let level;
-        if(this.className.includes("prior-low"))
-          {
-            level =  "low"
-          } else if(this.className.includes("prior-medium"))
-          {
-            level =  "medium"
-          }else if(this.className.includes("prior-high"))
-          {
-            level =  "high"
-          }
-
        // let index = items.indexOf(text);
        // items.splice(index, 1);
        // localStorage.setItem("items", JSON.stringify(items));
@@ -81,25 +81,12 @@ export default class Todo {
       } else {
         this.classList.add("done");
 
-        let items = localStorage.getItem("items");
-        items = JSON.parse(items);
-
-        let level;
-        if(this.className.includes("prior-low"))
-          {
-            level =  "low"
-          } else if(this.className.includes("prior-medium"))
-          {
-            level =  "medium"
-          }else if(this.className.includes("prior-high"))
-          {
-            level =  "high"
-          }
-
        items.forEach((element, index) => {
         if(element['level'] === level && element['title'] === this.innerHTML){
-          items.splice(index, 1);
-          localStorage.setItem("items", JSON.stringify(items)) 
+          this.status = "done";
+          items[index]['level'] = "done";
+          localStorage.setItem("items", JSON.stringify(items)) ;
+          
         }
         });
       }
