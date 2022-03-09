@@ -45,8 +45,17 @@ export default class Todo {
     // this function should mark the current todo as done, by adding the correct CSS class
     let items = localStorage.getItem("items");
     items = JSON.parse(items);
-
     let level;
+
+    items.forEach((element, index) => {
+      if(element['level'] === level && element['title'] === this.innerHTML){
+        let item =items[index];
+        if(item.status){
+          console.log("ja");
+        }
+      }
+      });
+
     if(this.className.includes("prior-low"))
       {
         level =  "low"
@@ -81,22 +90,33 @@ export default class Todo {
       } else {
         this.classList.add("done");
 
-       items.forEach((element, index) => {
-        if(element['level'] === level && element['title'] === this.innerHTML){
-          this.status = "done";
-          items[index]['level'] = "done";
-          localStorage.setItem("items", JSON.stringify(items)) ;
-          
-        }
-        });
+        items.forEach((element, index) => {
+          if(element['level'] === level && element['title'] === this.innerHTML){
+            //getting object
+           let item =items[index];
+
+           //setting status from false to true
+           item["status"] = "done";
+
+           //parsing the item to the string
+           let string = JSON.stringify(items);
+
+           //savin item to localstorage
+          localStorage.setItem('items', string);
+           
+          }
+          });
       }
     
     };
 
-  add() {
+  add(done) {
     // HINT🤩
     // this function should append the note to the screen somehow
     let todo = this.createElement(); // should return a full <li> with the right classes and innerHTML
+    if(done){
+      todo.classList.add("done");
+    }
     document.querySelector("#todo-list").appendChild(todo);
   }
 
@@ -109,13 +129,13 @@ export default class Todo {
     if(localStorage.getItem("items") === null){ //geen array, dus lege array vullen
       let item = [];
       
-      item.push({"level":this.level ,"title": this.title});
+      item.push({"level":this.level ,"title": this.title, 'status': "todo"});
       let string = JSON.stringify(item);
       localStorage.setItem('items', string);
 
     }else {   //array ophalen en uitsplitsen om daarna toe te voegen
       let item = JSON.parse(localStorage.getItem('items'));
-      item.push({"level":this.level ,"title": this.title});
+      item.push({"level":this.level ,"title": this.title, 'status': "todo"});
       let string = JSON.stringify(item);
       localStorage.setItem('items', string);
     }
