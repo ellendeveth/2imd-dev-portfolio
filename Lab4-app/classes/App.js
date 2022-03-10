@@ -20,7 +20,7 @@ export default class App {
         this.lng = location.coords.longitude;
         //console.log(this.lat);
         this.getWeather();
-        this.getDrinks();
+       
     }
 
     getWeather(){
@@ -46,10 +46,15 @@ export default class App {
         let temp = Math.round(json.main.temp);
         document.querySelector("h1").innerHTML = summary;
         document.querySelector("h2").innerHTML = temp + "°C";
+        if(temp < 10){
+            this.getHotDrinks();
+        } else {
+            this.getColdDrinks();
+        }
     }
 
-    getDrinks(){
-        console.log("getting drinks");
+    getHotDrinks(){
+        console.log("getting hot drinks");
         let url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
         console.log(url);
         fetch(url)
@@ -58,13 +63,34 @@ export default class App {
             })
             .then((json)=>{
                 console.log(json);
-                this.printDrink(json);
+                this.printHotDrink(json);
+            });
+    }
+    getColdDrinks(){
+        console.log("getting cold drinks");
+        let url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+        console.log(url);
+        fetch(url)
+            .then( result => {
+                return result.json();
+            })
+            .then((json)=>{
+                console.log(json);
+                this.printColdDrink(json);
             });
     }
 
-    printDrink(json){
+    printHotDrink(json){
         let drink = json.drinks[13].strDrink;
         console.log(drink);
+        let src = json.drinks[13].strDrinkThumb;
+        document.querySelector("img").src = src;
+    }
+    printColdDrink(json){
+        let drink = json.drinks[12].strDrink;
+        console.log(drink);
+        let src = json.drinks[12].strDrinkThumb;
+        document.querySelector("img").src = src;
     }
 
     locationError(err){
