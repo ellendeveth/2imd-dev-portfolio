@@ -1,6 +1,5 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+import App from './classes/App';
+
+const app = new App("43802af016384ed551bb9a0048403c64");
