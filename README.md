@@ -3,7 +3,7 @@ In this repository you'll find all my work from each week I do during my dev cla
 
 ## LAB1
 
-![screenshot git](https://github.com/ellendeveth/2imd-dev-portfolio/blob/main/Lab1-git/screenshot.png)
+[repository](https://github.com/ellendeveth/2imd-webtechadvanced-lab1)
 
 ## LAB2
 
@@ -12,11 +12,11 @@ In this repository you'll find all my work from each week I do during my dev cla
 
 2. [codepen-IMDticket](https://codepen.io/ellendeveth/pen/gOXjxVw)
 
-![screenshot flexboxfroggy](https://github.com/ellendeveth/2imd-dev-portfolio/blob/main/Lab2/flexboxfroggy.png)
-
-![screenshot gridgarden](https://github.com/ellendeveth/2imd-dev-portfolio/blob/main/Lab2/gridgarden.png)
 
 ## LAB3
 
 [codesandbox](https://codesandbox.io/embed/hungry-cori-pfnpwg?fontsize=14&hidenavigation=1&theme=dark)
 
+## LAB4
+
+[codesandbox](https://codesandbox.io/s/weather-based-ad-c3xfdl)
