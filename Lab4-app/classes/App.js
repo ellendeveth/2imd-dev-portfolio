@@ -6,6 +6,20 @@ export default class App {
         
         this.getLocation();
     }
+    checkLocalStorage(){
+        if(localStorage.getItem("weather") === null){
+            this.getWeather();
+        } else {
+            //get weather from localstorage
+            let weather = localStorage.getItem("weather");
+            weather = JSON.parse(weather);
+            let timeNow = Math.round(Date.now());
+            if(timeNow - weather.time > 3600){
+                localStorage.clear();
+                this.getWeather();
+            }
+        }
+    }
     getLocation(){ //een goede functie doet max 1 ding
         //console.log("getting location");
         navigator.geolocation.getCurrentPosition(
@@ -19,7 +33,7 @@ export default class App {
         this.lat = location.coords.latitude;
         this.lng = location.coords.longitude;
         //console.log(this.lat);
-        this.getWeather();
+        this.checkLocalStorage();
        
     }
 
@@ -34,6 +48,9 @@ export default class App {
             .then((json)=>{
                 console.log(json);
                 this.printWeather(json);
+                //set response into localstorage
+                let weather = {"description": json.weather[0].main, "temperature": json.main.temp, "time": Math.round(new Date().getTime()/1000)};
+                localStorage.setItem('weather', JSON.stringify(weather));
             }).catch( err => {
                 console.log(err);
             }).finally( () => {
