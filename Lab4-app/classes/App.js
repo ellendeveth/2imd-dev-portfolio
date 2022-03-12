@@ -44,12 +44,14 @@ export default class App {
     printWeather(json){
         let summary = json.weather[0].description;
         let temp = Math.round(json.main.temp);
-        document.querySelector("h1").innerHTML = summary;
-        document.querySelector("h2").innerHTML = temp + "°C";
+        document.querySelector("h1").innerHTML = "Today we have a " + summary;
+        document.querySelector("h2").innerHTML = "It is " + temp + "°C";
         if(temp < 10){
             this.getHotDrinks();
+            
         } else {
             this.getColdDrinks();
+           
         }
     }
 
@@ -84,13 +86,15 @@ export default class App {
         let drink = json.drinks[13].strDrink;
         console.log(drink);
         let src = json.drinks[13].strDrinkThumb;
-        document.querySelector("img").src = src;
+        document.querySelector("#img").src = src;
+        document.querySelector("p").innerHTML = "Come and get a " + drink;
     }
     printColdDrink(json){
-        let drink = json.drinks[12].strDrink;
+        let drink = json.drinks[59].strDrink;
         console.log(drink);
-        let src = json.drinks[12].strDrinkThumb;
-        document.querySelector("img").src = src;
+        let src = json.drinks[59].strDrinkThumb;
+        document.querySelector("#img").src = src;
+        document.querySelector("#drink").innerHTML = "Come and get a " + drink;
     }
 
     locationError(err){
