@@ -24,3 +24,6 @@ In this repository you'll find all my work from each week I do during my dev cla
 ## LAB5
 
 [repository](https://github.com/ellendeveth/2imd-dev-lab5)
+
+## LAB6
+[repository](https://github.com/ellendeveth/2imd-dev-lab6)
